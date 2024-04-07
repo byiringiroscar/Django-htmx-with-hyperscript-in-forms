@@ -1,6 +1,10 @@
 {% load widget_tweaks %}
 
-<form autocomplete="off" hx-post="{% url 'index' %}" hx-target="#userlist">
+<form autocomplete="off"
+    hx-post="{% url 'index' %}"
+     hx-target="#userlist"
+     _="on submit toggle @disabled on <button /> until htmx:afterOnLoad"
+     >
     {% csrf_token %}
 
     {% render_field form.name id="username" placeholder="Add User" %}
