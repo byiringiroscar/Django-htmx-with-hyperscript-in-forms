@@ -9,6 +9,7 @@ def index(request):
     event = Event.objects.get_or_create(name='Primavera Sound', number_of_places=3)[0]
     context = {
         'event': event,
-        'form': EventUserForm()
+        'form': EventUserForm(),
+        'users': event.users.all()
     }
     return render(request, 'index.html', context)
