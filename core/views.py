@@ -2,6 +2,7 @@ from django.shortcuts import render
 from core.models import Event, EventUser
 from core.forms import EventUserForm
 import time
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -29,3 +30,10 @@ def index(request):
         'users': event.users.all()
     }
     return render(request, 'index.html', context)
+
+
+def check_spaces(request):
+    # event = Event.objects.get(name='Primavera Sound')
+    event = Event.objects.first()
+    spaces_available = event.users.count() < event.number_of_places
+    return JsonResponse({'available': spaces_available})
