@@ -7,7 +7,7 @@
 <p>Event: {{ event.name }}</p>
 
 <div id="submit-form"
- _="on load fetch '/check_spaces' as json then if result.available is false add @disabled to <button />"
+ _="on load or htmx:afterRequest fetch '/check_spaces' as json then if result.available is false add @disabled to <button />"
 >
     {% include 'partials/form.html' %}
 </div>
