@@ -7,6 +7,7 @@ from core.forms import EventUserForm
 
 def index(request):
     event = Event.objects.get_or_create(name='Primavera Sound', number_of_places=3)[0]
+    
     context = {
         'event': event,
         'form': EventUserForm(),

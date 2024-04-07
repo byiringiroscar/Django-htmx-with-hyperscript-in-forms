@@ -1,6 +1,6 @@
 {% load widget_tweaks %}
 
-<form autocomplete="off">
+<form autocomplete="off" hx-post="{% url 'index' %}" hx-target="#userlist">
     {% csrf_token %}
 
     {% render_field form.name id="username" placeholder="Add User" %}
