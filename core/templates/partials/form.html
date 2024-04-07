@@ -3,7 +3,7 @@
 <form autocomplete="off"
     hx-post="{% url 'index' %}"
      hx-target="#userlist"
-     _="on submit toggle @disabled on <button /> until htmx:afterOnLoad"
+     _="on submit toggle @disabled on <button /> until htmx:afterOnLoad then put '' into #username's value"
      >
     {% csrf_token %}
 
