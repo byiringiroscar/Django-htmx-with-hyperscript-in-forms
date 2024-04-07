@@ -11,4 +11,4 @@ def index(request):
         'event': event,
         'form': EventUserForm()
     }
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
