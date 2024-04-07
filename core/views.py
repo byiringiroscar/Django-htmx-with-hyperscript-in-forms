@@ -10,7 +10,7 @@ def index(request):
     event = Event.objects.get_or_create(name='Primavera Sound', number_of_places=3)[0]
     if request.method == 'POST':
         time.sleep(1)  # we added this for testing to check if hyperscript will disable the button after form submitted with htmx
-        form = EventUserForm(request.POST)
+        form = EventUserForm(request.POST, event=event)
         if form.is_valid():
             name = form.cleaned_data['name']
             EventUser.objects.create(name=name, event=event)
@@ -18,6 +18,11 @@ def index(request):
                 'users': event.users.all()
             }
             return render(request, 'partials/userlist.html', context)
+        
+        context = {'form': form}
+        response = render(request, 'partials/form.html', context)
+        response['HX-Retarget'] = '#submit-form' # we added this to retarget the form after submission with htmx
+        return response
     context = {
         'event': event,
         'form': EventUserForm(),

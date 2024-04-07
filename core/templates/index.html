@@ -6,7 +6,9 @@
 
 <p>Event: {{ event.name }}</p>
 
-<div id="submit-form">
+<div id="submit-form"
+ _="on load fetch '/check_spaces' then put result into me"
+>
     {% include 'partials/form.html' %}
 </div>
 
