@@ -1,0 +1,20 @@
+<form autocomplete="off">
+    {% csrf_token %}
+
+    {% render_field form.name id="username" placeholder="Add User" %}
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    {% if form.non_field_errors %}
+
+    <p style="color: red;">
+        {{ form.non_field_errors }}
+    </p>
+
+
+    {% endif %}
+
+
+</form>
